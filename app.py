@@ -1,11 +1,16 @@
 import pickle
 
 import pandas as pd
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 # Create flask app
 flask_app = Flask(__name__)
 model = pickle.load(open("model.pkl", "rb"))
+
+
+@flask_app.route('/')
+def home():
+    return "application fonctionne bien"
 
 
 @flask_app.route("/prevision", methods=["POST"])
